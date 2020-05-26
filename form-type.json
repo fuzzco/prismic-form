@@ -1,0 +1,220 @@
+{
+    "Main": {
+        "name": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading2",
+                "label": "Name",
+                "placeholder": "Not displayed to user"
+            }
+        },
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "Slug"
+            }
+        },
+        "action": {
+            "type": "Text",
+            "config": {
+                "label": "Action",
+                "placeholder": "Action URL. Optional"
+            }
+        },
+        "form_heading": {
+            "type": "Text",
+            "config": {
+                "label": "Form Heading",
+                "placeholder": "Optional"
+            }
+        },
+        "success_content": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                "allowTargetBlank": true,
+                "label": "Success Content"
+            }
+        },
+        "success_left_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {
+                    "width": 600
+                },
+                "thumbnails": [],
+                "label": "Success Left Image"
+            }
+        },
+        "success_right_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {
+                    "width": 1200
+                },
+                "thumbnails": [],
+                "label": "Success Right Image"
+            }
+        },
+        "success_attribution": {
+            "type": "Text",
+            "config": {
+                "label": "Success Attribution"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {
+                    "label_and_inputs": [],
+                    "checkboxes": [],
+                    "file_upload": [],
+                    "submit": []
+                },
+                "choices": {
+                    "label_and_inputs": {
+                        "type": "Slice",
+                        "fieldset": "Label and Inputs",
+                        "description": "Single label with one or more text/number inputs",
+                        "icon": "edit",
+                        "display": "list",
+                        "non-repeat": {
+                            "label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Label"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "placeholder": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Placeholder",
+                                    "placeholder": "Optional"
+                                }
+                            },
+                            "type": {
+                                "type": "Select",
+                                "config": {
+                                    "options": [
+                                        "text",
+                                        "email",
+                                        "number",
+                                        "tel"
+                                    ],
+                                    "default_value": "text",
+                                    "label": "Type"
+                                }
+                            },
+                            "required": {
+                                "type": "Boolean",
+                                "config": {
+                                    "default_value": false,
+                                    "label": "Required"
+                                }
+                            }
+                        }
+                    },
+                    "checkboxes": {
+                        "type": "Slice",
+                        "fieldset": "Checkboxes",
+                        "description": "Single label with one or more checkboxes",
+                        "icon": "check_box",
+                        "display": "list",
+                        "non-repeat": {
+                            "label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Label",
+                                    "placeholder": "Optional"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "checkbox_label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Checkbox Label",
+                                    "placeholder": "Optional (recommended)"
+                                }
+                            },
+                            "default_value": {
+                                "type": "Boolean",
+                                "config": {
+                                    "placeholder_false": "unchecked",
+                                    "placeholder_true": "checked",
+                                    "default_value": false,
+                                    "label": "Default Value"
+                                }
+                            },
+                            "required": {
+                                "type": "Boolean",
+                                "config": {
+                                    "default_value": false,
+                                    "label": "Required"
+                                }
+                            }
+                        }
+                    },
+                    "file_upload": {
+                        "type": "Slice",
+                        "fieldset": "File Upload",
+                        "description": "Drag and drop or click-to-upload file input",
+                        "icon": "attach_file",
+                        "display": "list",
+                        "non-repeat": {
+                            "label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Label",
+                                    "placeholder": "Optional"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "placeholder": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Placeholder",
+                                    "placeholder": "Optional"
+                                }
+                            },
+                            "accepted_types": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Accepted Types",
+                                    "placeholder": "Optional. Example: image/png, image/jpeg"
+                                }
+                            },
+                            "required": {
+                                "type": "Boolean",
+                                "config": {
+                                    "default_value": false,
+                                    "label": "Required"
+                                }
+                            }
+                        }
+                    },
+                    "submit": {
+                        "type": "Slice",
+                        "fieldset": "Submit",
+                        "description": "Submit button with text",
+                        "icon": "send",
+                        "display": "list",
+                        "non-repeat": {
+                            "text": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Text"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    }
+                }
+            }
+        }
+    }
+}
