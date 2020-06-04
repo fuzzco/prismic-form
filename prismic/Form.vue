@@ -22,7 +22,7 @@
 <script>
 import { fetchByType } from '~/libs/prismic'
 import { get, kebabCase } from 'lodash'
-import { TheMask } from 'vue-the-mask'
+// import { TheMask } from 'vue-the-mask'
 //
 export default {
     props: {
@@ -155,35 +155,5 @@ export default {
 
 <style lang="scss">
 .prismic-form {
-    .form-heading {
-        @include fontSize(62px);
-
-        @include bp(s) {
-            @include fontSize(40px);
-        }
-    }
-
-    .form {
-        > :not(:first-child) {
-            margin-top: 20px;
-
-            @include bp(s) {
-                margin-top: 30px;
-            }
-        }
-
-        > .prismic-form-submit:last-child {
-            margin-top: 40px;
-
-            @include bp(s) {
-                margin-top: 20px;
-            }
-        }
-    }
-
-    .error-message {
-        color: red;
-        margin-top: 35px;
-    }
 }
 </style>

@@ -11,3 +11,4 @@ Once you have your [Fuzznuxt](https://github.com/fuzzco/fuzznuxt) site running:
     1. Add a slice zone to the new `form` type and paste the options in `form-type.json`.
 1. **Source**
     1. Copy the contents of the `prismic` directory into your `components` directory.
+    1. `npm install nuxt-dropzone`

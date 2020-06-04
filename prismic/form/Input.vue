@@ -30,12 +30,6 @@ export default {
 
 <style lang="scss">
 .prismic-form-input {
-    padding: 15px;
-    @include fontSize(16px);
-    border: 1px solid var(--grey);
-    outline: none;
-    transition: border-color 0.3s;
-
     &:invalid {
         border-color: red;
 
@@ -44,16 +38,13 @@ export default {
         }
     }
 
+    &::placeholder {
+    }
+
     &:placeholder-shown {
-        border-color: var(--grey);
     }
 
     &:focus {
-        border-color: var(--teal);
-    }
-
-    &::placeholder {
-        color: var(--dark-grey);
     }
 }
 </style>

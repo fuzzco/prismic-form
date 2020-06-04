@@ -15,7 +15,5 @@ export default {
 
 <style lang="scss">
 .prismic-form-submit {
-    @include button-reset;
-    @include cta-button;
 }
 </style>
