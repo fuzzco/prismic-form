@@ -14,7 +14,9 @@
             />
         </form>
         <p class="error-message" v-if="error">
-            Something went wrong. Please try again later.
+            <slot name="error">
+                Something went wrong. Please try again later.
+            </slot>
         </p>
     </div>
 </template>
@@ -33,6 +35,10 @@ export default {
         error: {
             type: Boolean,
             default: false
+        },
+        preventDefault: {
+            type: Boolean,
+            default: true
         }
     },
     // components: {
@@ -144,7 +150,9 @@ export default {
         // },
         kebabCase,
         onSubmit(evt) {
-            evt.preventDefault()
+            if (this.preventDefault) {
+                evt.preventDefault()
+            }
             if (this.formData.action) {
                 this.$emit('submit', this.formData.action)
             }
