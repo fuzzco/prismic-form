@@ -36,32 +36,6 @@
                 "label": "Success Content"
             }
         },
-        "success_left_image": {
-            "type": "Image",
-            "config": {
-                "constraint": {
-                    "width": 600
-                },
-                "thumbnails": [],
-                "label": "Success Left Image"
-            }
-        },
-        "success_right_image": {
-            "type": "Image",
-            "config": {
-                "constraint": {
-                    "width": 1200
-                },
-                "thumbnails": [],
-                "label": "Success Right Image"
-            }
-        },
-        "success_attribution": {
-            "type": "Text",
-            "config": {
-                "label": "Success Attribution"
-            }
-        },
         "body": {
             "type": "Slices",
             "fieldset": "Slice zone",
