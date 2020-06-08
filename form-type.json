@@ -186,6 +186,53 @@
                             }
                         },
                         "repeat": {}
+                    },
+                    "text": {
+                        "type": "Slice",
+                        "fieldset": "Text",
+                        "description": "Misc rich text",
+                        "icon": "text_fields",
+                        "display": "list",
+                        "non-repeat": {
+                            "text": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                                    "allowTargetBlank": true,
+                                    "label": "text"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "select": {
+                        "type": "Slice",
+                        "fieldset": "Select",
+                        "description": "Pick from predefined options",
+                        "icon": "format_list_bulleted",
+                        "display": "list",
+                        "non-repeat": {
+                            "label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Label"
+                                }
+                            },
+                            "placeholder": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Placeholder"
+                                }
+                            }
+                        },
+                        "repeat": {
+                            "option": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Option"
+                                }
+                            }
+                        }
                     }
                 }
             }
