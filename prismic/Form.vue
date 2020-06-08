@@ -1,6 +1,11 @@
 <template>
     <div class="prismic-form">
-        <h2 class="form-heading">{{ formData.form_heading }}</h2>
+        <!-- Heading -->
+        <h2 class="form-heading" v-if="formData.form_heading">
+            {{ formData.form_heading }}
+        </h2>
+
+        <!-- Form -->
         <form
             :class="['form', { ready }]"
             :action="formData.action"
@@ -13,11 +18,19 @@
                 v-bind="{ ...slice.primary, items: slice.items }"
             />
         </form>
-        <p class="error-message" v-if="error">
-            <slot name="error">
+
+        <slot name="success" key="success" v-if="submitted && !error">
+            <p class="success-message">
+                Form submitted successfully!
+            </p>
+        </slot>
+
+        <!-- Error -->
+        <slot name="error" key="error" v-if="error" v-bind:error="{ error }">
+            <p class="error-message">
                 Something went wrong. Please try again later.
-            </slot>
-        </p>
+            </p>
+        </slot>
     </div>
 </template>
 
@@ -41,13 +54,11 @@ export default {
             default: true
         }
     },
-    // components: {
-    //     TheMask
-    // },
     data() {
         return {
             ready: false,
-            prismicData: null
+            prismicData: null,
+            submitted: false
         }
     },
     async mounted() {
@@ -80,79 +91,14 @@ export default {
                 slice => `prismic-form-${this.kebabCase(slice.slice_type)}`
             )
         }
-        // fields() {
-        //     const output = []
-        //     const raw = get(this.formData, 'fields', [])
-        //     let fieldset = null
-        //
-        //     // loop through fields
-        //     raw.forEach(field => {
-        //         // if we're a fieldset...
-        //         if (field.type === 'fieldset') {
-        //             // ...either start a new set...
-        //             if (fieldset === null) {
-        //                 fieldset = [field]
-        //             }
-        //             // ...or complete and append an existing one
-        //             else {
-        //                 output.push(fieldset)
-        //                 // clear the working fieldset
-        //                 fieldset = null
-        //             }
-        //         }
-        //
-        //         // ...otherwise, if we're continuing a fieldset...
-        //         else if (fieldset) {
-        //             fieldset.push(field)
-        //         }
-        //
-        //         // ...otherwise, just append this field
-        //         else {
-        //             output.push(field)
-        //         }
-        //     })
-        //
-        //     return output
-        // }
     },
     methods: {
-        // getFieldElementType(field) {
-        //     switch (true) {
-        //         case field.mask:
-        //             return 'the-mask'
-        //         case field.type === 'fieldset':
-        //             return null
-        //
-        //         default:
-        //             return 'input'
-        //     }
-        // },
-        // overrideAttributes(field) {
-        //     const output = {}
-        //
-        //     // split overrides by comma and trim whitespace
-        //     const overrides = (field.overrides || '')
-        //         .split(',')
-        //         .map(str => str.trim())
-        //
-        //     // split overrides into key-values - example:
-        //     // key:value
-        //     overrides.forEach(str => {
-        //         const matches = /([^:]*):(.*)/.exec(str)
-        //
-        //         if (matches && matches.length > 2) {
-        //             // if we have enough matches, add to output
-        //             output[matches[1]] = matches[2]
-        //         }
-        //     })
-        //
-        //     return output
-        // },
         kebabCase,
         onSubmit(evt) {
             if (this.preventDefault) {
                 evt.preventDefault()
             }
+            this.submitted = true
             if (this.formData.action) {
                 this.$emit('submit', this.formData.action)
             }
