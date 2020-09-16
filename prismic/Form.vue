@@ -102,5 +102,9 @@ export default {
 
 <style lang="scss">
 .prismic-form {
+    input,
+    select {
+        @include input-reset;
+    }
 }
 </style>

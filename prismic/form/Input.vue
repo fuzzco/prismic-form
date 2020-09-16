@@ -15,36 +15,15 @@ export default {
     props: {
         options: {
             type: Object,
-            default: () => {}
+            default: () => {},
         },
         name: {
             type: String,
-            default: ''
-        }
+            default: '',
+        },
     },
     methods: {
-        kebabCase
-    }
+        kebabCase,
+    },
 }
 </script>
-
-<style lang="scss">
-.prismic-form-input {
-    &:invalid {
-        border-color: red;
-
-        &:not(:focus) {
-            color: red;
-        }
-    }
-
-    &::placeholder {
-    }
-
-    &:placeholder-shown {
-    }
-
-    &:focus {
-    }
-}
-</style>

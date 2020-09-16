@@ -51,25 +51,25 @@ export default {
     props: {
         items: { type: Array, default: () => [] },
         label: { type: String, default: '' },
-        optionsOverride: { type: Object, default: () => {} }
+        optionsOverride: { type: Object, default: () => {} },
     },
     data() {
         return {
             dragging: false,
             options: {
                 url: '/',
-                ...this.optionsOverride
+                ...this.optionsOverride,
                 // TODO: validate file types based on item.accepted_types
             },
-            uploadedFiles: this.items.map(item => null)
+            uploadedFiles: this.items.map((item) => null),
         }
     },
     computed: {
         fileNames() {
-            return this.uploadedFiles.map(file => {
+            return this.uploadedFiles.map((file) => {
                 return file && file.name ? file.name : ''
             })
-        }
+        },
     },
     methods: {
         camelCase,
@@ -81,80 +81,7 @@ export default {
             this.dragging = false
             this.$refs.input[index].files = e.dataTransfer.files
             Vue.set(this.uploadedFiles, index, e.dataTransfer.files[0])
-        }
-    }
+        },
+    },
 }
 </script>
-
-<style lang="scss">
-.prismic-form-file-upload {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-gap: 20px;
-
-    @include bp(s) {
-        grid-template-columns: 100%;
-    }
-
-    .inner-label {
-        line-height: 1.4;
-        padding: 15px 0;
-
-        @include bp(s) {
-            padding: 0;
-        }
-    }
-
-    // Input row
-    .single-input {
-        border: 1px solid var(--grey);
-        padding: 15px;
-        color: var(--dark-grey);
-        position: relative;
-        min-height: 1rem;
-        line-height: 1.4;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-gap: 20px;
-
-        @include bp(s) {
-            grid-template-columns: 1fr;
-            grid-gap: 10px;
-            padding: 10px;
-            min-height: 22px;
-        }
-
-        .is-desktop &:focus-within,
-        .is-desktop &.dragging {
-            border-color: var(--teal);
-        }
-    }
-
-    // input covers whole area
-    [type='file'] {
-        position: absolute;
-        cursor: pointer;
-        opacity: 0;
-        z-index: 5;
-        width: 100%;
-        height: 100%;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-    }
-
-    // Name preview
-    .file-preview {
-        max-width: 200px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        color: var(--black);
-
-        &.has-file {
-            color: var(--teal);
-        }
-    }
-}
-</style>

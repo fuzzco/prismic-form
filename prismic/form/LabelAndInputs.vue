@@ -39,84 +39,21 @@ import { camelCase, kebabCase } from 'lodash'
 export default {
     props: {
         items: { type: Array, default: () => [] },
-        label: { type: String, default: '' }
+        label: { type: String, default: '' },
     },
     computed: {
         cmpClasses() {
             return this.label
                 ? [
                       'prismic-form-label-and-inputs',
-                      `${kebabCase(this.label)}-group`
+                      `${kebabCase(this.label)}-group`,
                   ]
                 : 'prismic-form-label-and-inputs'
-        }
+        },
     },
     methods: {
         camelCase,
-        kebabCase
-    }
+        kebabCase,
+    },
 }
 </script>
-
-<style lang="scss">
-.prismic-form-label-and-inputs {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-gap: 20px;
-
-    @include bp(s) {
-        grid-template-columns: 100%;
-    }
-
-    .inner-label {
-        align-self: center;
-    }
-
-    .prismic-form-input {
-        grid-column-start: 2;
-
-        @include bp(s) {
-            grid-column-start: initial;
-        }
-    }
-
-    // Specific input type styles
-    input[type='number']::-webkit-inner-spin-button,
-    input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    // Specific group styles
-    &.full-name-group {
-        grid-template-columns: 200px repeat(2, 1fr);
-
-        @include bp(s) {
-            grid-template-columns: 100%;
-        }
-
-        .prismic-form-input {
-            grid-column-start: initial;
-        }
-    }
-
-    &.physical-address-group {
-        grid-template-columns: 200px repeat(2, 1fr);
-
-        @include bp(s) {
-            grid-template-columns: 100%;
-        }
-
-        #physical-address-0 {
-            grid-column: span 2;
-
-            @include bp(s) {
-                grid-column: initial;
-            }
-        }
-        #physical-address-2 {
-            grid-column: initial;
-        }
-    }
-}
-</style>
