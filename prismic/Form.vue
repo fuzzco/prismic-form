@@ -6,11 +6,7 @@
         </h2>
 
         <!-- Form -->
-        <form
-            :class="['form', { ready }]"
-            :action="formData.action"
-            @submit="onSubmit"
-        >
+        <form :class="['form']" :action="formData.action" @submit="onSubmit">
             <component
                 v-for="(slice, i) in slices"
                 :key="i"
@@ -35,7 +31,7 @@
 </template>
 
 <script>
-import { fetchByType } from '~/libs/prismic'
+import { prismicQuery } from '~/libs/prismic'
 import { get, kebabCase } from 'lodash'
 // import { TheMask } from 'vue-the-mask'
 //
@@ -56,16 +52,16 @@ export default {
     },
     data() {
         return {
-            ready: false,
             prismicData: null,
             submitted: false,
         }
     },
-    async mounted() {
+    async fetch() {
         // fetch form
-        const results = await fetchByType({
+        const results = await prismicQuery({
             type: 'form',
             slug: this.form.slug,
+            $prismic: this.$prismic,
         })
 
         // try to set up form data
@@ -75,9 +71,6 @@ export default {
         } else {
             this.$emit('fetch-failed')
         }
-
-        // ready!
-        this.ready = true
     },
     computed: {
         formData() {
