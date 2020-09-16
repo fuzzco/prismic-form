@@ -19,14 +19,14 @@
             />
         </form>
 
-        <slot name="success" key="success" v-if="submitted && !error">
+        <slot name="success" v-if="submitted && !error">
             <p class="success-message">
                 Form submitted successfully!
             </p>
         </slot>
 
         <!-- Error -->
-        <slot name="error" key="error" v-if="error" v-bind:error="{ error }">
+        <slot name="error" v-if="error" v-bind:error="{ error }">
             <p class="error-message">
                 Something went wrong. Please try again later.
             </p>
@@ -43,29 +43,29 @@ export default {
     props: {
         form: {
             type: Object,
-            required: true
+            required: true,
         },
         error: {
             type: Boolean,
-            default: false
+            default: false,
         },
         preventDefault: {
             type: Boolean,
-            default: true
-        }
+            default: true,
+        },
     },
     data() {
         return {
             ready: false,
             prismicData: null,
-            submitted: false
+            submitted: false,
         }
     },
     async mounted() {
         // fetch form
         const results = await fetchByType({
             type: 'form',
-            slug: this.form.slug
+            slug: this.form.slug,
         })
 
         // try to set up form data
@@ -88,9 +88,9 @@ export default {
         },
         cmpComponents() {
             return this.slices.map(
-                slice => `prismic-form-${this.kebabCase(slice.slice_type)}`
+                (slice) => `prismic-form-${this.kebabCase(slice.slice_type)}`
             )
-        }
+        },
     },
     methods: {
         kebabCase,
@@ -102,8 +102,8 @@ export default {
             if (this.formData.action) {
                 this.$emit('submit', this.formData.action)
             }
-        }
-    }
+        },
+    },
 }
 </script>
 
